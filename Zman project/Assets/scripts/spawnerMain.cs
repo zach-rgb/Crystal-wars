@@ -10,6 +10,7 @@ public class spawnerMain : MonoBehaviour
     [SerializeField] private float max_distance;
     private bool spawn=false;
     [SerializeField] private string tag;
+    public storage storage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -20,7 +21,7 @@ public class spawnerMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time_elasped += Time.deltaTime;
         
             
             if (target_finding.findingDistanceTag(tag) < max_distance)
@@ -29,9 +30,15 @@ public class spawnerMain : MonoBehaviour
             }
         
         
+        time_elasped += Time.deltaTime;
 
+        if (Mathf.FloorToInt(time_elasped % 60) >= time)
+        {
+            time_elasped = 0;
+            return true;
+        }
         
-        if (timer.timer_func(max_time) && cost_checker.cost_check(cost))
+        if ((time_elasped % 60) >= time && ObjectToSpawn.GetComponent<cost>().CostOfObject<storage.)
         {
             Instantiate(ObjectToSpawn, position, rotation, ParentObject.transform);
         }
