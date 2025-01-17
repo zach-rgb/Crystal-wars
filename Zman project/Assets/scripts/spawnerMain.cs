@@ -31,7 +31,10 @@ public class spawnerMain : MonoBehaviour
         
 
         
-        
+        if (timer.timer_func(max_time) && cost_checker.cost_check(cost))
+        {
+            Instantiate(ObjectToSpawn, position, rotation, ParentObject.transform);
+        }
         if (spawn)
         {
             Debug.Log("hallo");
